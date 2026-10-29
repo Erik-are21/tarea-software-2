@@ -11,11 +11,20 @@ use Illuminate\View\View;
 
 class PlayerController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $validated = $request->validate([
+            'team_id' => ['nullable', 'integer', 'exists:teams,id'],
+        ]);
+        $selectedTeamId = isset($validated['team_id']) ? (int) $validated['team_id'] : null;
+
         return view('players.index', [
-            'players' => Player::with('team')->orderBy('nombre')->get(),
+            'players' => Player::with('team')
+                ->when($selectedTeamId, fn ($query) => $query->where('team_id', $selectedTeamId))
+                ->orderBy('nombre')
+                ->get(),
             'teams' => Team::orderBy('nombre')->get(),
+            'selectedTeamId' => $selectedTeamId,
             'editing' => null,
         ]);
     }
@@ -49,6 +58,7 @@ class PlayerController extends Controller
         return view('players.index', [
             'players' => Player::with('team')->orderBy('nombre')->get(),
             'teams' => Team::orderBy('nombre')->get(),
+            'selectedTeamId' => null,
             'editing' => $player,
         ]);
     }

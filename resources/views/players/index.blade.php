@@ -4,6 +4,23 @@
     <main class="max-w-7xl mx-auto p-6 space-y-6">
         @if (session('success')) <p class="text-green-700">{{ session('success') }}</p> @endif
 
+        <form method="GET" action="{{ route('players.index') }}" class="bg-white p-6 shadow rounded flex flex-wrap items-end gap-4">
+            <label class="block">Filtrar por equipo
+                <select class="block mt-1 w-full rounded border-gray-300" name="team_id">
+                    <option value="">Todos los equipos</option>
+                    @foreach ($teams as $team)
+                        <option value="{{ $team->id }}" @selected($selectedTeamId === $team->id)>
+                            {{ $team->nombre }}
+                        </option>
+                    @endforeach
+                </select>
+            </label>
+            <button class="px-4 py-2 bg-gray-800 text-white rounded" type="submit">Ver jugadores</button>
+            @if ($selectedTeamId)
+                <a class="text-blue-700 underline" href="{{ route('players.index') }}">Ver todos</a>
+            @endif
+        </form>
+
         @can('manage-league')
             <form method="POST" action="{{ $editing ? route('players.update', $editing) : route('players.store') }}"
                   class="bg-white p-6 shadow rounded space-y-4">

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
 use Database\Seeders\LeagueRosterAndScheduleSeeder;
@@ -253,6 +254,34 @@ class LeagueManagementTest extends TestCase
                     && $lakersStats['losses'] === 1
                     && $warriorsStats['games_played'] === 0;
             });
+    }
+
+    public function test_viewers_can_filter_players_by_team(): void
+    {
+        $this->seed(TeamsSeeder::class);
+        $celtics = Team::where('nombre', 'Celtics')->firstOrFail();
+        $lakers = Team::where('nombre', 'Lakers')->firstOrFail();
+
+        Player::create([
+            'team_id' => $celtics->id,
+            'nombre' => 'Jugador de Boston',
+            'numero' => 41,
+            'posicion' => 'Guard',
+        ]);
+        Player::create([
+            'team_id' => $lakers->id,
+            'nombre' => 'Jugador de Los Angeles',
+            'numero' => 42,
+            'posicion' => 'Forward',
+        ]);
+
+        $this->actingAs(User::factory()->create());
+
+        $this->get(route('players.index', ['team_id' => $celtics->id]))
+            ->assertOk()
+            ->assertSee('Jugador de Boston')
+            ->assertDontSee('Jugador de Los Angeles')
+            ->assertSee('Ver todos');
     }
 
     public function test_teams_page_distinguishes_nba_and_fictional_teams(): void

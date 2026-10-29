@@ -24,7 +24,7 @@ class TeamController extends Controller
     }
 
     /**
-     * @param Collection<int, Team> $teams
+     * @param  Collection<int, Team>  $teams
      * @return Collection<int, array{
      *     team: Team,
      *     games_played: int,
