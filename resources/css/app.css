@@ -1,0 +1,1029 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        color-scheme: light;
+        font-family: "Figtree", "Segoe UI", Arial, sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        --ink: #171b18;
+        --muted: #747a73;
+        --paper: #f5f4f0;
+        --orange: #e66c35;
+        --line: #e7e5df;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+button,
+a,
+input {
+    font: inherit;
+}
+
+.app-shell {
+    background: var(--paper);
+}
+
+.site-nav {
+    position: relative;
+    z-index: 5;
+    background: #111412;
+    color: #f9f8f4;
+}
+
+.site-nav__inner {
+    width: min(100% - 64px, 1360px);
+    height: 76px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.site-brand,
+.auth-brand,
+.auth-panel__brand,
+.league-footer__brand {
+    color: inherit;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -.08em;
+}
+
+.site-brand span,
+.auth-brand span,
+.auth-panel__brand span,
+.league-footer__brand span {
+    color: var(--orange);
+}
+
+.site-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    height: 100%;
+    margin-left: 76px;
+}
+
+.site-nav__links a,
+.site-nav__account a,
+.site-nav__account button {
+    color: #babeb8;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color .18s ease;
+}
+
+.site-nav__links a:hover,
+.site-nav__links a.is-active,
+.site-nav__account button:hover {
+    color: #fff;
+}
+
+.site-nav__links a.is-active {
+    position: relative;
+}
+
+.site-nav__links a.is-active::after {
+    position: absolute;
+    right: 0;
+    bottom: -29px;
+    left: 0;
+    height: 2px;
+    background: var(--orange);
+    content: "";
+}
+
+.site-nav__account {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-left: auto;
+    color: #babeb8;
+    font-size: 13px;
+}
+
+.site-nav__account form,
+.site-nav__mobile form {
+    margin: 0;
+}
+
+.site-nav__account button,
+.site-nav__mobile button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.site-nav__toggle,
+.site-nav__mobile {
+    display: none;
+}
+
+.league-page {
+    min-height: calc(100vh - 76px);
+}
+
+.league-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 500px;
+    align-items: center;
+    overflow: hidden;
+    background: #171b18;
+    color: #fff;
+}
+
+.league-hero::before,
+.auth-photo::before {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background-image: var(--hero-image);
+    background-position: center 48%;
+    background-size: cover;
+    content: "";
+}
+
+.league-hero::after,
+.auth-photo::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(14 18 15 / 88%) 0%, rgb(14 18 15 / 62%) 48%, rgb(14 18 15 / 8%) 100%);
+    content: "";
+}
+
+.league-hero__content {
+    width: min(100% - 64px, 1200px);
+    margin: 0 auto;
+    padding: 85px 0 96px;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: #e9e5dc;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.eyebrow__dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.eyebrow--dark {
+    color: var(--orange);
+}
+
+.league-hero h1 {
+    max-width: 700px;
+    margin: 25px 0 18px;
+    font-size: clamp(52px, 7.2vw, 88px);
+    font-weight: 700;
+    letter-spacing: -.075em;
+    line-height: .99;
+}
+
+.league-hero__copy {
+    max-width: 430px;
+    margin: 0 0 31px;
+    color: #d0d1cb;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.button {
+    display: inline-flex;
+    min-height: 47px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 0 19px;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .18s ease, transform .18s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button--orange {
+    background: var(--orange);
+    color: #fff;
+}
+
+.button--orange:hover {
+    background: #ca5525;
+}
+
+.button--dark {
+    background: #171b18;
+    color: #fff;
+}
+
+.button--dark:hover {
+    background: #353b36;
+}
+
+.league-hero__note {
+    position: absolute;
+    right: max(32px, calc((100vw - 1200px) / 2));
+    bottom: 43px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #e0dfd8;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.league-hero__note-mark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.league-hero__index {
+    position: absolute;
+    bottom: 47px;
+    left: max(32px, calc((100vw - 1200px) / 2));
+    color: rgb(255 255 255 / 65%);
+    font-size: 10px;
+    letter-spacing: .13em;
+}
+
+.league-content {
+    width: min(100% - 64px, 1200px);
+    margin: 0 auto;
+    padding: 82px 0 92px;
+}
+
+.notice {
+    margin-bottom: 24px;
+    padding: 14px 17px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.notice--success {
+    border-color: #b7d3bd;
+    background: #edf6ef;
+    color: #255b34;
+}
+
+.notice--error {
+    border-color: #e9bbb0;
+    background: #fff1ed;
+    color: #963e29;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.section-heading h2,
+.team-form__heading h3 {
+    margin: 11px 0 7px;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    letter-spacing: -.06em;
+    line-height: 1;
+}
+
+.section-heading__copy {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.league-stats {
+    display: flex;
+    gap: 0;
+    margin: 39px 0 27px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.league-stat {
+    display: flex;
+    min-width: 150px;
+    align-items: baseline;
+    gap: 10px;
+    padding: 18px 25px 18px 0;
+}
+
+.league-stat + .league-stat {
+    padding-left: 25px;
+    border-left: 1px solid var(--line);
+}
+
+.league-stat__number {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.06em;
+}
+
+.league-stat__label {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.team-card {
+    min-width: 0;
+    padding: 23px 23px 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: #fff;
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-3px);
+    border-color: #d6d0c6;
+    box-shadow: 0 10px 28px rgb(31 33 29 / 6%);
+}
+
+.team-card__top {
+    display: flex;
+    min-height: 45px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.team-mark {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid #d8d8d1;
+    border-radius: 50%;
+    color: #262b26;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+}
+
+.team-badge {
+    padding: 6px 9px;
+    border-radius: 2px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.team-badge--nba {
+    background: #eef1ee;
+    color: #3e5747;
+}
+
+.team-badge--new {
+    background: #fff0e7;
+    color: #a84d28;
+}
+
+.team-card__body {
+    min-height: 130px;
+    padding: 21px 0 18px;
+}
+
+.team-card__city {
+    margin: 0 0 5px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.team-card__body h3 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.055em;
+    line-height: 1.15;
+}
+
+.team-card__coach {
+    margin: 13px 0 0;
+    color: #777c75;
+    font-size: 11px;
+}
+
+.team-card__actions {
+    display: flex;
+    min-height: 47px;
+    align-items: center;
+    gap: 17px;
+    border-top: 1px solid var(--line);
+}
+
+.team-card__actions a,
+.team-card__actions button,
+.text-link {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #555b54;
+    cursor: pointer;
+    font-size: 11px;
+    text-decoration: none;
+    transition: color .18s ease;
+}
+
+.team-card__actions a:hover,
+.team-card__actions button:hover,
+.text-link:hover {
+    color: var(--orange);
+}
+
+.team-card__actions form {
+    margin-left: auto;
+}
+
+.team-form {
+    margin: 0 0 28px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.team-form__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.team-form__heading h3 {
+    margin-bottom: 0;
+    font-size: 26px;
+}
+
+.team-form__fields {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.team-field {
+    display: grid;
+    gap: 8px;
+    color: #424740;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.team-field input {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 43px;
+    padding: 0 12px;
+    border: 1px solid #ddded8;
+    border-radius: 3px;
+    outline: none;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13px;
+}
+
+.team-field input:focus,
+.auth-form input:not([type="checkbox"]):focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgb(230 108 53 / 12%);
+}
+
+.team-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 18px;
+    color: #50564f;
+    font-size: 12px;
+}
+
+.team-checkbox input,
+.auth-form input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--orange);
+}
+
+.team-form__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.field-error {
+    color: #bb3e2c;
+    font-size: 12px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 45px;
+    border: 1px dashed #cbc9c0;
+    color: var(--muted);
+    text-align: center;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+    color: var(--ink);
+    font-size: 23px;
+}
+
+.empty-state p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.league-footer {
+    display: flex;
+    min-height: 82px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 max(32px, calc((100vw - 1200px) / 2));
+    background: #111412;
+    color: #f5f4f0;
+}
+
+.league-footer__brand {
+    font-size: 18px;
+}
+
+.league-footer p {
+    margin: 0;
+    color: #a9aea7;
+    font-size: 11px;
+}
+
+.league-footer p a {
+    color: #e8e6df;
+    text-underline-offset: 3px;
+}
+
+.auth-screen {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+    background: var(--paper);
+}
+
+.auth-photo {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 42px clamp(36px, 7vw, 100px);
+    box-sizing: border-box;
+    background: #171b18;
+    color: #fff;
+}
+
+.auth-photo::before {
+    background-image: var(--auth-image);
+    background-position: center;
+}
+
+.auth-photo::after {
+    background: linear-gradient(180deg, rgb(15 18 16 / 42%) 0%, rgb(15 18 16 / 20%) 35%, rgb(15 18 16 / 79%) 100%);
+}
+
+.auth-brand {
+    align-self: flex-start;
+}
+
+.auth-photo__caption {
+    max-width: 520px;
+    padding: 40px 0 70px;
+}
+
+.auth-photo__caption h1 {
+    margin: 20px 0 14px;
+    font-size: clamp(52px, 6vw, 78px);
+    font-weight: 700;
+    letter-spacing: -.075em;
+    line-height: .98;
+}
+
+.auth-photo__caption > p:last-child {
+    margin: 0;
+    color: #d4d5cf;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.auth-photo__credit {
+    position: absolute;
+    right: 30px;
+    bottom: 22px;
+    color: rgb(255 255 255 / 62%);
+    font-size: 10px;
+}
+
+.auth-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 55px clamp(30px, 7vw, 104px);
+}
+
+.auth-panel__inner {
+    width: 100%;
+    max-width: 390px;
+}
+
+.auth-panel__brand {
+    display: none;
+}
+
+.auth-heading {
+    margin: 0 0 30px;
+}
+
+.auth-heading h2 {
+    margin: 11px 0 8px;
+    color: var(--ink);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -.06em;
+    line-height: 1.1;
+}
+
+.auth-heading > p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.auth-form {
+    display: grid;
+    gap: 20px;
+}
+
+.auth-form label {
+    color: #424740;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.auth-form input:not([type="checkbox"]) {
+    box-sizing: border-box;
+    min-height: 46px;
+    padding: 0 12px;
+    border: 1px solid #ddded8;
+    border-radius: 3px;
+    outline: none;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13px;
+}
+
+.auth-form button[type="submit"] {
+    min-height: 44px;
+    padding: 0 19px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--orange);
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background .18s ease;
+}
+
+.auth-form button[type="submit"]:hover {
+    background: #ca5525;
+}
+
+.auth-form .flex.items-center.justify-end {
+    gap: 14px;
+}
+
+.auth-form .inline-flex.items-center {
+    gap: 5px;
+}
+
+.auth-link {
+    color: #915033;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.auth-link:hover {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.auth-form .text-red-600,
+.auth-form .text-red-500 {
+    color: #bb3e2c;
+    font-size: 12px;
+}
+
+.auth-switch {
+    margin: 24px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+.auth-panel__foot {
+    margin: 50px 0 0;
+    color: #8b9088;
+    font-size: 11px;
+}
+
+.app-heading {
+    background: #fff;
+}
+
+.app-heading__inner {
+    width: min(100% - 64px, 1200px);
+    margin: 0 auto;
+    padding: 22px 0;
+}
+
+@media (max-width: 850px) {
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .site-nav__inner {
+        width: calc(100% - 40px);
+    }
+
+    .site-nav__links {
+        gap: 23px;
+        margin-left: 44px;
+    }
+
+    .league-hero__content,
+    .league-content {
+        width: calc(100% - 48px);
+    }
+
+    .auth-screen {
+        grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+    }
+
+    .auth-photo {
+        padding-right: 38px;
+        padding-left: 38px;
+    }
+
+    .auth-panel {
+        padding-right: 36px;
+        padding-left: 36px;
+    }
+}
+
+@media (max-width: 620px) {
+    .site-nav__inner {
+        width: calc(100% - 36px);
+        height: 64px;
+        justify-content: space-between;
+    }
+
+    .site-nav__links,
+    .site-nav__account {
+        display: none;
+    }
+
+    .site-nav__toggle {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        align-content: center;
+        justify-content: center;
+        gap: 5px;
+        border: 1px solid #3d433e;
+        border-radius: 3px;
+        background: none;
+        cursor: pointer;
+    }
+
+    .site-nav__toggle span {
+        width: 17px;
+        height: 1px;
+        background: #fff;
+    }
+
+    .site-nav__mobile {
+        display: grid;
+        gap: 0;
+        padding: 0 18px 12px;
+        border-top: 1px solid #2a2f2b;
+        background: #111412;
+    }
+
+    .site-nav__mobile > a,
+    .site-nav__mobile > span,
+    .site-nav__mobile button {
+        padding: 12px 0;
+        color: #d0d2cd;
+        font-size: 13px;
+        text-align: left;
+        text-decoration: none;
+    }
+
+    .site-nav__mobile > span {
+        border-top: 1px solid #2a2f2b;
+        color: #939991;
+    }
+
+    .league-hero {
+        min-height: 470px;
+    }
+
+    .league-hero::after {
+        background: linear-gradient(90deg, rgb(14 18 15 / 84%) 0%, rgb(14 18 15 / 57%) 72%, rgb(14 18 15 / 38%) 100%);
+    }
+
+    .league-hero__content,
+    .league-content {
+        width: calc(100% - 40px);
+    }
+
+    .league-hero__content {
+        padding: 65px 0 80px;
+    }
+
+    .league-hero h1 {
+        font-size: clamp(48px, 12vw, 68px);
+    }
+
+    .league-hero__note {
+        right: 20px;
+        bottom: 24px;
+    }
+
+    .league-hero__index {
+        bottom: 34px;
+        left: 20px;
+    }
+
+    .league-content {
+        padding: 56px 0 62px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .league-stats {
+        flex-wrap: wrap;
+        margin-top: 28px;
+    }
+
+    .league-stat {
+        min-width: 0;
+        flex: 1 1 auto;
+        gap: 6px;
+        padding: 15px 10px 15px 0;
+    }
+
+    .league-stat + .league-stat {
+        padding-left: 10px;
+    }
+
+    .league-stat__number {
+        font-size: 20px;
+    }
+
+    .league-stat__label {
+        font-size: 10px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .team-card__body {
+        min-height: 112px;
+    }
+
+    .team-form {
+        padding: 21px;
+    }
+
+    .team-form__fields {
+        grid-template-columns: 1fr;
+    }
+
+    .league-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        padding: 20px;
+    }
+
+    .auth-screen {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    .auth-photo {
+        min-height: 235px;
+        padding: 23px 25px;
+    }
+
+    .auth-photo__caption {
+        padding: 36px 0 8px;
+    }
+
+    .auth-photo__caption h1 {
+        margin: 12px 0 7px;
+        font-size: 43px;
+    }
+
+    .auth-photo__caption > p:last-child {
+        font-size: 12px;
+    }
+
+    .auth-photo__credit {
+        right: 16px;
+        bottom: 12px;
+    }
+
+    .auth-panel {
+        flex: 1;
+        padding: 37px 25px 24px;
+    }
+
+    .auth-panel__brand {
+        display: inline-block;
+        margin-bottom: 35px;
+        color: var(--ink);
+        font-size: 20px;
+    }
+
+    .auth-panel__foot {
+        margin-top: 36px;
+    }
+
+    .app-heading__inner {
+        width: calc(100% - 40px);
+    }
+}
