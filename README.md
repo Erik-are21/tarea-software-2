@@ -31,14 +31,6 @@ Aplicación para administrar y consultar una liga de baloncesto. El administrado
 
    Crea la base de datos `okey` en MySQL/MariaDB antes de ejecutar las migraciones. No compartas ni subas el archivo `.env`.
 
-   En XAMPP, inicia MySQL desde el Panel de Control. Apache es opcional si ejecutas el paso 4, porque Laravel inicia su propio servidor local. Si otro servidor MySQL ya utiliza el puerto `3306`, configura MySQL de XAMPP para usar `3307` en las opciones `[client]` y `[mysqld]` de `C:\xampp\mysql\bin\my.ini`, e indica `DB_PORT=3307` en `.env`. En este equipo se utiliza ese puerto alternativo para no detener el servicio MySQL 8 existente. Puedes crear la base desde phpMyAdmin o con el cliente de XAMPP:
-
-   ```sh
-   C:\xampp\mysql\bin\mysql.exe --host=127.0.0.1 --port=3307 --user=root -e "CREATE DATABASE IF NOT EXISTS okey CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
-   ```
-
-   La configuración de este equipo apunta a `okey` en el MariaDB de XAMPP. Su base SQLite local se conserva por separado; MySQL y SQLite no comparten automáticamente los cambios.
-
 3. Genera la clave de la aplicación y crea las tablas:
 
    ```sh
@@ -54,7 +46,7 @@ Aplicación para administrar y consultar una liga de baloncesto. El administrado
    composer run dev
    ```
 
-   La aplicación se sirve normalmente en `http://127.0.0.1:8000`. Con XAMPP, los datos quedan en el MariaDB de esta computadora; el enlace local no es público y solo funciona mientras los servicios necesarios estén encendidos. GitHub aloja el código fuente, no ejecuta Laravel ni aloja esta base de datos.
+   La aplicación se sirve normalmente en `http://127.0.0.1:8000`.
 
 ## Funcionalidades
 
