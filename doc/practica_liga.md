@@ -45,4 +45,4 @@ Inicialmente las pruebas compartían el SQLite de desarrollo y podían borrar su
 
 Con PHP, Composer y Node.js: ejecutar `composer install`, `npm install`, `php artisan key:generate`, `php artisan migrate --seed` y `composer run dev`. `npm run build` compila los recursos y `php artisan test` ejecuta la suite.
 
-Git mantiene el trabajo local en `feature/players-by-team`, en commits descriptivos. Sin remoto configurado, todavía no se publicó en GitHub. Para entregar el enlace, crear el repositorio, añadir `git remote add origin <URL>` y subir con `git push -u origin feature/players-by-team`.
+Git mantiene el trabajo en commits descriptivos en `feature/players-by-team`. El repositorio público es [Erik-are21/tarea-software-2](https://github.com/Erik-are21/tarea-software-2); tanto la rama de trabajo como el commit base están publicados. La integración por pull request requiere completar la autenticación de GitHub/GitKraken.

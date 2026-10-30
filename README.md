@@ -70,4 +70,4 @@ La suite usa una base SQLite en memoria para no modificar los datos de desarroll
 
 ## Control de versiones
 
-Los cambios se trabajan en ramas de funcionalidad y se guardan en commits descriptivos. Este proyecto tiene un repositorio Git local; aún no hay un remoto configurado para publicar ramas o abrir pull requests.
+Repositorio público: [Erik-are21/tarea-software-2](https://github.com/Erik-are21/tarea-software-2). La rama de trabajo `feature/players-by-team` conserva los cambios en commits descriptivos; `main` contiene el commit base. Los cambios se integran mediante pull request cuando GitHub/GitKraken está autenticado.
