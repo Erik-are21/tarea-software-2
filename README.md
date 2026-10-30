@@ -58,6 +58,8 @@ Aplicación para administrar y consultar una liga de baloncesto. El administrado
 
 El correo administrador se establece en `config/league.php`. La contraseña de administrador no se guarda en el repositorio.
 
+La documentación técnica obligatoria está en [`doc/practica_liga.md`](doc/practica_liga.md); [`doc/guion_video.md`](doc/guion_video.md) organiza una explicación y demostración breve del sistema.
+
 ## Pruebas
 
 ```sh
