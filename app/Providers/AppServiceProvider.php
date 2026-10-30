@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('manage-league', fn (User $user): bool => $user->email === config('league.admin_email'));
+        Gate::define(
+            'manage-league',
+            fn (User $user): bool => ! config('league.public_read_only')
+                && $user->email === config('league.admin_email'),
+        );
     }
 }

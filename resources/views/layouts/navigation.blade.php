@@ -8,17 +8,19 @@
             <a class="{{ request()->routeIs('games.*') ? 'is-active' : '' }}" href="{{ route('games.index') }}">Partidos</a>
         </div>
 
-        <div class="site-nav__account">
-            @auth
-                <span>{{ Auth::user()->name }}</span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">Salir</button>
-                </form>
-            @else
-                <a href="{{ route('login') }}">Iniciar sesión</a>
-            @endauth
-        </div>
+        @if (Route::has('login'))
+            <div class="site-nav__account">
+                @auth
+                    <span>{{ Auth::user()->name }}</span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">Salir</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}">Iniciar sesión</a>
+                @endauth
+            </div>
+        @endif
 
         <button class="site-nav__toggle" type="button" @click="open = !open" :aria-expanded="open" aria-label="Abrir menú">
             <span></span><span></span>
@@ -28,14 +30,16 @@
         <a href="{{ route('teams.index') }}">Equipos</a>
         <a href="{{ route('players.index') }}">Jugadores</a>
         <a href="{{ route('games.index') }}">Partidos</a>
-        @auth
-            <span>{{ Auth::user()->name }}</span>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit">Cerrar sesión</button>
-            </form>
-        @else
-            <a href="{{ route('login') }}">Iniciar sesión</a>
-        @endauth
+        @if (Route::has('login'))
+            @auth
+                <span>{{ Auth::user()->name }}</span>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            @else
+                <a href="{{ route('login') }}">Iniciar sesión</a>
+            @endauth
+        @endif
     </div>
 </nav>

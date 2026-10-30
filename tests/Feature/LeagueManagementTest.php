@@ -140,6 +140,26 @@ class LeagueManagementTest extends TestCase
         $this->assertDatabaseHas('teams', ['nombre' => 'Equipo administrador']);
     }
 
+    public function test_public_read_only_mode_disables_admin_routes_and_controls(): void
+    {
+        config(['league.public_read_only' => true]);
+        $this->actingAs($this->adminUser());
+
+        $this->get(route('teams.index'))
+            ->assertOk()
+            ->assertDontSee('Agregar equipo')
+            ->assertDontSee('Editar');
+
+        $this->post(route('teams.store'), [
+            'nombre' => 'No autorizado',
+            'ciudad' => 'Lima',
+            'entrenador' => 'No autorizado',
+            'es_inventado' => 1,
+        ])->assertForbidden();
+
+        $this->assertDatabaseMissing('teams', ['nombre' => 'No autorizado']);
+    }
+
     public function test_nba_roster_and_schedule_seeder_is_repeatable(): void
     {
         $this->seed(LeagueRosterAndScheduleSeeder::class);

@@ -48,6 +48,8 @@ Aplicación para administrar y consultar una liga de baloncesto. El administrado
 
    El seeder agrega equipos, jugadores y partidos de ejemplo. Para una base SQLite local, cambia `DB_CONNECTION` a `sqlite`; Laravel usa `database/database.sqlite`.
 
+   Para servir temporalmente una copia pública de consulta, define `LEAGUE_PUBLIC_READ_ONLY=true` en `.env` y reinicia Laravel. Este modo quita las rutas de inicio de sesión, registro y perfil, y bloquea la administración; al terminar, cambia la opción a `false` y reinicia el servidor para recuperar la gestión normal.
+
 4. Inicia el entorno de desarrollo:
 
    ```sh
